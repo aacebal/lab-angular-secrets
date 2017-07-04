@@ -13,9 +13,21 @@ export class SessionService {
   }
 
   singup(user) {
-    return this.http.post('/signup', user).
-      map((res) => res.json()).
-        catch(this.handleError)
+    return this.http.post('/signup', user)
+      .map((res) => res.json())
+        .catch(this.handleError)
+  }
+
+  login(user) {
+    return this.http.post('/login', user)
+      .map((res) => res.json())
+        .catch(this.handleError)
+  }
+
+  isLogged() {
+    return this.http.get(`/loggedin`)
+      .map(res => res.json())
+      .catch(this.handleError);
   }
 
 }
